@@ -1,0 +1,20 @@
+create CI/CD pipeline 
+
+github link : https://github.com/devopsditinus/devops-cicd-test.git
+
+Docker hub Repositories : ditinusdevops/cicdtest
+
+
+use : github-jenkins - docker-  apache
+
+
+task 
+set up an automated build workflow
+configure build 
+create deploy images (e.g. Docker
+automated test 
+email notification 
+
+
+github > build > review > test ( need permission to next build)  > review >( need permission to staging build) staging
+

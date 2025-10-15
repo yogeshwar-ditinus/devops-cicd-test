@@ -32,10 +32,14 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh '''
-                    echo "Building Docker image..."
-                    docker build -t ${DOCKER_IMAGE} .
-                '''
+                script {
+                    // ✅ Fix: make Docker image name safe (lowercase & no special chars)
+                    def safeJobName = env.JOB_NAME.toLowerCase().replaceAll('[^a-z0-9_.-]', '-')
+                    def imageTag = "mycompany/${safeJobName}:${env.BUILD_NUMBER}"
+
+                    echo "Building Docker image: ${imageTag}"
+                    sh "docker build -t ${imageTag} ."
+                }
             }
         }
 

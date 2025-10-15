@@ -3,9 +3,9 @@ pipeline {
 
     environment {
         DOCKER_IMAGE = "mycompany/${env.JOB_NAME.toLowerCase()}:${env.BUILD_NUMBER}"
-
         DEPLOY_SERVER = "ubuntu@<your-server-ip>"
     }
+
 
     stages {
 

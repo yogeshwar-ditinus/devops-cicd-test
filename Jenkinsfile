@@ -24,6 +24,24 @@ pipeline {
             }
         }
 
+        stage('Prepare Laravel App') {
+    steps {
+        sh '''
+        # Copy example env file if .env not exists
+        if [ ! -f .env ]; then
+          cp .env.example .env
+        fi
+
+        # Generate app key
+        php artisan key:generate
+
+        # Set permissions
+        chmod -R 777 storage bootstrap/cache
+        '''
+    }
+}
+
+
         stage('Run Tests') {
             steps {
                 sh 'php artisan test || true'

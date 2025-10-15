@@ -9,11 +9,11 @@ pipeline {
     stages {
 
         stage('Checkout Code') {
-            steps {
-                git branch: 'main', credentialsId: 'github-creds', url: 'https://github.com/<username>/<repo>.git'
-            }
-        }
-
+    steps {
+        git branch: 'main', credentialsId: 'github-creds', url: 'https://github.com/yogeshwar-ditinus/devops-cicd-test.git'
+    }
+}
+    }
         stage('Install Dependencies') {
             steps {
                 sh '''

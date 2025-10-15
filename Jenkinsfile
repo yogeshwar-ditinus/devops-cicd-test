@@ -56,7 +56,8 @@ pipeline {
                     def imageTag = "mycompany/${safeJobName}:${env.BUILD_NUMBER}"
 
                     echo "Building Docker image: ${imageTag}"
-                    sh "docker build -t ${imageTag} ."
+                    sh "docker build -t yogeshwar471/multiproject-cicd:${BUILD_NUMBER} ."
+
                 }
             }
         }
@@ -66,7 +67,8 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                     sh '''
                         echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-                        docker push ${DOCKER_IMAGE}
+                        docker push yogeshwar471/multiproject-cicd:${BUILD_NUMBER}
+
                         docker logout
                     '''
                 }
